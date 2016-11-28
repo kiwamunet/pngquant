@@ -107,6 +107,7 @@ static pngquant_error read_image(liq_attr *options, const char *filename, int us
 static pngquant_error write_image(png8_image *output_image, png24_image *output_image24, const char *outname, struct pngquant_options *options);
 static char *add_filename_extension(const char *filename, const char *newext);
 static bool file_exists(const char *outname);
+static int pngquant_main(int argc, char *argv[]);
 
 static void verbose_printf(struct pngquant_options *context, const char *fmt, ...)
 {
@@ -282,7 +283,12 @@ static const struct option long_options[] = {
 pngquant_error pngquant_file(const char *filename, const char *outname, struct pngquant_options *options);
 
 
-int main(int argc, char *argv[])
+int pngquant(int argc, char *argv[])
+{
+  return pngquant_main(argc, argv);
+}
+
+static int pngquant_main(int argc, char *argv[])
 {
     struct pngquant_options options = {
         .floyd = 1.f, // floyd-steinberg dithering

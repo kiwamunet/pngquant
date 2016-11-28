@@ -40,7 +40,7 @@ rwpng_cocoa.o: rwpng_cocoa.m
 	$(CC) -Wno-enum-conversion -c $(CFLAGS) -o $@ $< &> /dev/null || clang -Wno-enum-conversion -c -O3 $(CFLAGS) -o $@ $<
 
 $(BIN): $(OBJS) $(STATICLIB)
-	$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
+	$(CC) $^ $(CFLAGS) $(LDFLAGS) -c -o $@
 
 $(TESTBIN): test/test.o $(STATICLIB)
 	$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
